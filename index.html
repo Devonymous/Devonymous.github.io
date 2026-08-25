@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Devi van der Geest — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F5F7FA;
+    --bg-card: #FFFFFF;
+    --ink: #1B2430;
+    --ink-soft: #5B6472;
+    --blue: #2F5C8A;
+    --blue-deep: #1F3E5C;
+    --spark: #2FB6C4;
+    --line: #DCE3EC;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif; line-height:1.6;
+  }
+  .dotgrid{
+    background-image: radial-gradient(var(--line) 1.4px, transparent 1.4px);
+    background-size: 22px 22px;
+  }
+  a{color:var(--blue);}
+  .wrap{ max-width: 880px; margin: 0 auto; padding: 0 28px; }
+
+  /* HERO */
+  header.hero{ padding: 90px 0 70px 0; }
+  .hero-inner{ display:flex; align-items:center; gap:48px; flex-wrap:wrap; }
+  .hero-photo{
+    width:132px; height:132px; border-radius:50%; object-fit:cover; flex:0 0 auto;
+    border:4px solid #fff; box-shadow: 0 2px 18px rgba(31,62,92,0.18);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:1.5px;
+    color: var(--spark); text-transform:uppercase; margin:0 0 10px 0; font-weight:500;
+  }
+  h1{
+    font-family:'Space Grotesk', sans-serif; font-weight:700;
+    font-size: 44px; line-height:1.05; margin:0 0 12px 0; color: var(--blue-deep);
+    letter-spacing: -0.5px;
+  }
+  .role{ font-family:'Space Grotesk', sans-serif; font-size:19px; color:var(--blue); font-weight:500; margin:0 0 18px 0;}
+  .intro{ font-size:16px; color:var(--ink-soft); max-width:480px; margin:0 0 22px 0; }
+  .cta-row{ display:flex; gap:12px; flex-wrap:wrap; }
+  .btn{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; text-decoration:none;
+    padding:10px 18px; border-radius:3px; border:1.5px solid var(--blue-deep); color:var(--blue-deep);
+    transition: all .15s ease; display:inline-block;
+  }
+  .btn:hover{ background:var(--blue-deep); color:#fff; }
+  .btn.solid{ background:var(--blue-deep); color:#fff; }
+  .btn.solid:hover{ background:var(--blue); border-color:var(--blue); }
+
+  /* SECTION LABEL */
+  .section-label{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:2px;
+    color:var(--ink-soft); text-transform:uppercase; margin: 0 0 6px 0;
+  }
+  .section-title{
+    font-family:'Space Grotesk', sans-serif; font-size:28px; font-weight:600;
+    color:var(--blue-deep); margin:0 0 40px 0;
+  }
+  section{ padding: 56px 0; border-top: 1px solid var(--line); }
+
+  /* PROJECTS */
+  .project{
+    display:flex; flex-wrap:wrap; gap:0; margin-bottom:56px;
+    background: var(--bg-card); border:1px solid var(--line); border-radius:6px; overflow:hidden;
+  }
+  .project:last-child{ margin-bottom:0; }
+  .project-media{ background:#EDF1F6; min-height:210px; flex:0 0 300px; max-width:300px; display:flex; align-items:center; justify-content:center; }
+  .project-media img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .project-media.placeholder{
+    flex-direction:column; gap:8px; color:#96A2B3;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; text-align:center; padding:20px;
+    border-right:1px dashed var(--line);
+  }
+  .project-body{ padding:26px 28px 26px 26px; flex:1 1 380px; min-width:280px; }
+  .project-tag{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:1px;
+    color:var(--spark); text-transform:uppercase; margin:0 0 8px 0; font-weight:500;
+  }
+  .project-title{ font-family:'Space Grotesk', sans-serif; font-size:21px; font-weight:600; margin:0 0 10px 0; color:var(--ink); }
+  .project-desc{ font-size:15px; color:var(--ink-soft); margin:0 0 16px 0; }
+  .specs{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 14px 0; }
+  .spec-pill{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; background:#EEF3F8; color:var(--blue-deep);
+    padding:4px 10px; border-radius:20px; border:1px solid var(--line);
+  }
+  .project-links a{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; margin-right:16px; }
+
+  @media (max-width: 640px){
+    .project-media{ flex:1 1 100%; max-width:100%; min-height:180px; border-right:none; border-bottom:1px dashed var(--line); }
+    .project-body{ padding: 22px; flex:1 1 100%; }
+    h1{ font-size:32px; }
+    .hero-inner{ gap:24px; }
+  }
+
+  /* SKILLS */
+  .skills-grid{ display:flex; flex-wrap:wrap; gap:10px; }
+  .skill-pill{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; padding:7px 14px;
+    border:1px solid var(--line); border-radius:3px; background:#fff; color:var(--ink);
+  }
+
+  /* CONTACT */
+  footer{ padding: 56px 0 70px 0; }
+  .contact-row{ display:flex; gap:28px; flex-wrap:wrap; font-family:'IBM Plex Mono', monospace; font-size:14px; }
+  .contact-row a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--blue); margin-right:28px; }
+  .contact-row a:last-child{ margin-right:0; }
+  .foot-note{ margin-top:36px; font-size:12.5px; color:var(--ink-soft); }
+</style>
+</head>
+<body>
+
+  <header class="hero dotgrid">
+    <div class="wrap">
+      <div class="hero-inner">
+        <img class="hero-photo" src="assets/profile.jpg" alt="Devi van der Geest">
+        <div>
+          <p class="eyebrow">Portfolio — Groningen, NL</p>
+          <h1>Devi van der Geest</h1>
+          <p class="role">Junior Web &amp; Game Developer</p>
+          <p class="intro">Ik hou van bouwen — of dat nu een website is, een game, of een robot van karton. Dit zijn drie projecten die laten zien hoe ik denk en werk.</p>
+          <div class="cta-row">
+            <a class="btn solid" href="mailto:devivandergeest@gmail.com">Mail me</a>
+            <a class="btn" href="https://www.linkedin.com/in/devi-van-der-geest-b46974201/" target="_blank">LinkedIn</a>
+            <a class="btn" href="assets/Devi_van_der_Geest_CV.pdf" target="_blank">Download CV</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="projecten">
+    <div class="wrap">
+      <p class="section-label">Build log</p>
+      <h2 class="section-title">Projecten</h2>
+
+      <div class="project">
+        <div class="project-media">
+          <img src="assets/scheduler.jpg" alt="Vrijwilliger Dashboard van het Kat in Nood roostersysteem">
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Log_01 — Web</p>
+          <h3 class="project-title">Kat in Nood — Digitaal Roostersysteem</h3>
+          <p class="project-desc">Voor Stichting Kat in Nood ontwikkelde ik een digitaal roostersysteem waarmee vrijwilligers zich kunnen inschrijven voor taken en co&ouml;rdinatoren overzicht houden. Op basis van gesprekken met vrijwilligers en co&ouml;rdinatoren bouwde ik een werkend WordPress-prototype met PHP, ACF en Custom Post Types.</p>
+          <div class="specs">
+            <span class="spec-pill">WordPress</span>
+            <span class="spec-pill">PHP</span>
+            <span class="spec-pill">ACF</span>
+            <span class="spec-pill">Custom Post Types</span>
+          </div>
+          <div class="project-links">
+            <a href="https://www.youtube.com/watch?v=e-NPxVY3Kh8" target="_blank">Bekijk video →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-media">
+          <img src="assets/nienoord.jpg" alt="Borg Nienoord Simulator — historische kamer met licht door de ramen">
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Log_02 — Game</p>
+          <h3 class="project-title">Borg Nienoord Simulator</h3>
+          <p class="project-desc">Een soort walking simulator waarin je door oude kamers van Borg Nienoord loopt. Objecten in de ruimte komen tot leven zodra je ermee interacteert en vertellen een eigen verhaal over zichzelf of hun omgeving, aangevuld met NPC's die je onderweg tegenkomt. Het idee: bezoekers op een leukere manier kennis laten maken met de geschiedenis van de plek dan een tekstbordje aan de muur.</p>
+          <div class="specs">
+            <span class="spec-pill">Unity</span>
+            <span class="spec-pill">C#</span>
+            <span class="spec-pill">NPC-interactie</span>
+          </div>
+          <div class="project-links">
+            <a href="https://youtu.be/lMy_yOQj55Y">Bekijk video →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-media">
+          <img src="assets/robot.jpg" alt="Zelfgebouwde robothond van karton met LED-gezicht">
+        </div>
+        <div class="project-body">
+          <p class="project-tag">Log_03 — Hardware</p>
+          <h3 class="project-title">Robothond</h3>
+          <p class="project-desc">Een zelfgebouwde robothond van karton, aangestuurd door twee Arduino's die met elkaar communiceren. De robot simuleert drie zintuigen: een afstandssensor als 'zicht', een knop als 'gehoor' en een joystick als 'gevoel'. Een LED-matrix toont verschillende gezichten, en een servomotor doet dienst als staart.</p>
+          <div class="specs">
+            <span class="spec-pill">Arduino</span>
+            <span class="spec-pill">Sensoren</span>
+            <span class="spec-pill">C++</span>
+            <span class="spec-pill">LED-matrix</span>
+          </div>
+          <div class="project-links">
+            <a href="https://youtube.com/shorts/YWQiwOq_xRk">Bekijk video →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <p class="section-label">Toolbox</p>
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <span class="skill-pill">WordPress</span>
+        <span class="skill-pill">PHP</span>
+        <span class="skill-pill">JavaScript</span>
+        <span class="skill-pill">HTML &amp; CSS</span>
+        <span class="skill-pill">Unity</span>
+        <span class="skill-pill">Unreal Engine</span>
+        <span class="skill-pill">C#</span>
+        <span class="skill-pill">Arduino / C++</span>
+        <span class="skill-pill">Git</span>
+        <span class="skill-pill">AI-ondersteunde ontwikkeling</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p class="section-label">Contact</p>
+      <div class="contact-row">
+        <a href="mailto:devivandergeest@gmail.com">devivandergeest@gmail.com</a>
+        <a href="tel:0637603192">06 37 60 31 92</a>
+        <a href="https://www.linkedin.com/in/devi-van-der-geest-b46974201/" target="_blank">LinkedIn</a>
+      </div>
+      <p class="foot-note">Groningen, Nederland — open voor junior web &amp; game development rollen.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
